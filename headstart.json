@@ -1,0 +1,106 @@
+{
+  "products": {
+    "sku": "string",
+    "title": "string",
+    "description": "string",
+    "category": ["string"],
+    "size": ["string"],
+    "color": ["string"],
+    "group": "string",
+    "imageURL": "string",
+    "manufactoror_details": {
+      "model_number": "string",
+      "release_date": "date"
+    },
+
+    "shipping_details": {
+      "wieght": "int",
+      "width": "int",
+      "height": "int",
+      "depth": "int"
+    },
+
+    "quantity": "int",
+
+    "pricing": {
+      "sell_price": "int",
+      "offer_price": "int"
+    },
+
+    "reviews": ["reviews"]
+  },
+
+  "suppliers": {
+    "id": "int",
+    "companyName": "string",
+    "name": "string",
+    "address": {
+      "address1": "string",
+      "address2": "string",
+      "city": "string",
+      "state": "string",
+      "postalcode": "string"
+    },
+    "phone": "string",
+    "email": "string",
+    "goodstype": ["string"],
+    "suppliedProducts": ["backreferences"]
+  },
+
+  "users": {
+    "id": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "address": {
+      "address1": "string",
+      "address2": "string",
+      "city": "string",
+      "state": "string",
+      "postalcode": "string"
+    },
+    "phone": "string",
+    "email": "string",
+    "password": "string",
+    "active": false,
+    "date_joined": "date",
+    "cart": ["products"],
+    "wishlist": ["products"],
+    "orders": ["products"]
+  },
+
+  "admin": {
+    "id": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "address": {
+      "address1": "string",
+      "address2": "string",
+      "city": "string",
+      "state": "string",
+      "postalcode": "string"
+    },
+    "phone": "string",
+    "email": "string",
+    "password": "string",
+    "active": false,
+    "date_joined": "date"
+  },
+
+  "payment": {
+    "id": "string",
+    "dataandtime": "date and time",
+    "amount": "string",
+    "paid_by": "user_id"
+  },
+
+  "orders": {
+    "id": "string",
+    "products": "product",
+    "orderNUmber": "string",
+    "quantity": "string",
+    "total": "string",
+    "paymentstatus": "string",
+    "fulfilled": false,
+    "shipdate": "date"
+  }
+}

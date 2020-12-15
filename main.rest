@@ -1,0 +1,135 @@
+POST  http://localhost:8080/user/create
+Authorization: dklfhaewowi32047230jlks
+Content-Type: application/json
+
+{ 
+    "uid": "289347ioewr",
+    "fname":"mayank",
+    "lname": "kumar",
+    "email":"mayank.1997@gmail.com",
+    "role": "admin",
+    "password": "mayank",
+    "phone": "9534133934"
+}
+
+###
+GET  http://localhost:8080/user/getalluser
+Authorization: dklfhaewowi32047230jlks
+
+
+###
+POST http://localhost:8080/user/login
+Authorization: dklfhaewowi32047230jlks
+Content-Type: application/json
+
+{
+    "email":"mayank.1997@gmail.com",
+    "password":"mayank"
+}
+
+
+###
+POST http://localhost:8080/user/resetpasswordbyemail
+Authorization: dklfhaewowi32047230jlks
+Content-Type: application/json
+
+{
+    "email":"mayank.1997@gmail.com",
+    "password":"mayank"
+}
+
+
+
+
+###
+post http://localhost:8080/product/add
+Content-Type: application/json
+
+  {
+    "category": [
+      "lower"
+    ],
+    "tags": [
+      "haathi",
+      "elephant",
+      "child",
+      "cute",
+      "falana",
+      "dhimkaan",
+      "and ",
+      "nothing",
+      "got ",
+      "present"
+    ],
+    "imageURL": [
+      "https://firebasestorage.googleapis.com/v0/b/fashion-app-7be49.appspot.com/o/thumbnail%2Fdownload.jpg?alt=media&token=55f431f8-b2be-41f4-b1a4-ccc4b88517b2",
+      "https://firebasestorage.googleapis.com/v0/b/fashion-app-7be49.appspot.com/o/thumbnail%2Fimage.jpg?alt=media&token=653e637f-5835-4208-8c67-8e68764a409d"
+    ],
+    "details": [
+      {
+        "field": "width",
+        "value": "200 inches"
+      },
+      {
+        "field": "height",
+        "value": "300 inches"
+      },
+      {
+        "field": "weight",
+        "value": "300pounds"
+      },
+      {
+        "field": "name",
+        "value": "gulati"
+      }
+    ],
+    "reviews": [],
+    "pid": "haathi2",
+    "title": "haathi fasdf images with child haathi",
+    "offer_price": 150,
+    "sell_price": 200,
+    "description": "product contails hathi and his child and falana dhimkaan so much text here to understand and nothing but beautliful and falndlfadl",
+    "color": "black",
+    "thumbnailURL": "https://firebasestorage.googleapis.com/v0/b/fashion-app-7be49.appspot.com/o/thumbnail%2Fimages.jpg?alt=media&token=6db16315-dea9-4bd8-97ac-cf07ba616bcf",
+    "group": "not",
+    "quantity": 5,
+    "__v": 0
+  }
+
+###
+GET http://localhost:8080/product/getall
+Authorization: dklfhaewowi32047230jlks
+###
+GET http://localhost:8080/product/getproduct/5fd0b6b01de363461c852baf
+
+###
+GET http://localhost:8080/product/searchByCategory/lower
+###
+POST  http://localhost:8080/product/addreview5fd0b6b01de363461c852baf
+Content-Type: application/json
+
+{
+  "user":"suman",
+  "review":"this product is so good"
+}
+
+
+###
+GET http://localhost:8080/user/addtocart/5fd0b6b01de363461c852bb0-5fd0b6b01de363461c852baf
+Authorization: dklfhaewowi32047230jlks
+
+###
+GET http://localhost:8080/user/addtowishlist:id-:pid
+
+###
+GET http://localhost:8080/category/getcategory
+Authorization: dklfhaewowi32047230jlks
+
+###
+POST http://localhost:8080/category/getcategory
+Authorization: dklfhaewowi32047230jlks
+Content-Type: application/json
+
+{
+  "category":"shirts"
+}
