@@ -40,17 +40,17 @@ router.route("/create").post((req, res) => {
 
 //login user
 router.route("/login").post((req, res) => {
-  UserModel.findOne({ email: req.body.email }, function (err, user) {
-    if (err) {
-      res.status(200).send({ message: err });
-    } else {
+  UserModel.findOne({ email: req.body.email })
+    .then((user) => {
       if (bcrypt.compareSync(req.body.password, user.password)) {
         res.status(200).json(user);
       } else {
         res.status(200).send({ message: "username or password is incorrect!" });
       }
-    }
-  });
+    })
+    .catch((err) => {
+      res.status(200).send({ message: err });
+    });
 });
 
 //update user
