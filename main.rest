@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ###
-GET  http://localhost:8080/user/getalluser
+GET  https://vup-api.herokuapp.com/user/getalluser
 Authorization: dklfhaewowi32047230jlks
 
 
