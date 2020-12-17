@@ -48,7 +48,7 @@ Content-Type: application/json
 
   {
     "category": [
-      "lower"
+      "shirt"
     ],
     "tags": [
       "haathi",
@@ -99,7 +99,7 @@ Content-Type: application/json
   }
 
 ###
-GET http://localhost:8080/product/getall
+GET https://vup-api.herokuapp.com/product/getall
 Authorization: dklfhaewowi32047230jlks
 ###
 GET http://localhost:8080/product/getproduct/5fd0b6b01de363461c852baf

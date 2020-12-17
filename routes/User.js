@@ -82,7 +82,18 @@ router.route("/resetpasswordbyphone").post((req, res) => {
 
 //update cart
 router.route("/addtocart/:id-:pid").get((req, res) => {
-  ProductModel.findById({ _id: req.params.pid })
+  ProductModel.findById(
+    { _id: req.params.pid },
+    {
+      title: 1,
+      group: 1,
+      category: 1,
+      description: 1,
+      color: 1,
+      offer_price: 1,
+      sell_price: 1,
+    }
+  )
     .then((product) => {
       UserModel.findByIdAndUpdate(
         { _id: req.params.id },
@@ -102,7 +113,18 @@ router.route("/addtocart/:id-:pid").get((req, res) => {
 
 //update wishlist
 router.route("/addtowishlist/:id-:pid").get((req, res) => {
-  ProductModel.findById({ pid: req.params.pid })
+  ProductModel.findById(
+    { pid: req.params.pid },
+    {
+      title: 1,
+      group: 1,
+      category: 1,
+      description: 1,
+      color: 1,
+      offer_price: 1,
+      sell_price: 1,
+    }
+  )
     .then((product) => {
       UserModel.findByIdAndUpdate(
         { _id: req.params.id },
@@ -123,7 +145,18 @@ router.route("/addtowishlist/:id-:pid").get((req, res) => {
 //update orders
 
 router.route("/addtoorder/:id-:uid").get((req, res) => {
-  ProductModel.findById({ pid: req.params.id })
+  ProductModel.findById(
+    { pid: req.params.id },
+    {
+      title: 1,
+      group: 1,
+      category: 1,
+      description: 1,
+      color: 1,
+      offer_price: 1,
+      sell_price: 1,
+    }
+  )
     .then((product) => {
       UserModel.findByIdAndUpdate(
         { uid: req.params.uid },
