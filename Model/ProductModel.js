@@ -6,7 +6,7 @@ const ProductSchema = new mongoose.Schema({
   offer_price: { type: Number, required: true },
   sell_price: { type: Number, required: true },
   category: { type: [String], required: true },
-  description: { type: String },
+  description: { type: String, required: true },
   rating: { type: String },
   tags: { type: [String] },
   color: { type: String, required: true },
@@ -16,6 +16,7 @@ const ProductSchema = new mongoose.Schema({
   quantity: { type: Number, required: true },
   details: { type: [Object], required: true },
   reviews: { type: [Object] },
+  seller: { type: String, required: true },
 });
 
 const Product = mongoose.model("products", ProductSchema);
