@@ -67,6 +67,7 @@ router.route("/add").post((req, res) => {
     quantity: req.body.quantity,
     details: req.body.details,
     rating: req.body.rating,
+    seller: req.body.seller,
   });
 
   product

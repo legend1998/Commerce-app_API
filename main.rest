@@ -42,7 +42,8 @@ Content-Type: application/json
 
 
 ###
-post http://localhost:8080/product/add
+post https://vup-api.herokuapp.com/product/add
+Authorization: dklfhaewowi32047230jlks
 Content-Type: application/json
 
   {
@@ -83,7 +84,8 @@ Content-Type: application/json
         "value": "gulati"
       }
     ],
-    "reviews": [],
+    "seller": "suman saari center",
+    "rating": "3",
     "pid": "haathi2",
     "title": "haathi fasdf images with child haathi",
     "offer_price": 150,
