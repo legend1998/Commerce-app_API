@@ -27,6 +27,23 @@ Content-Type: application/json
     "password":"mayank"
 }
 
+###
+POST http://localhost:8080/user/address
+Authorization: dklfhaewowi32047230jlks
+Content-Type: application/json
+
+{
+    "uid":"5fd845491d950472306d3e37",
+    "street":"college road",
+    "house":"o2i34j",
+    "landmark":"sarkanda chowk bajrangbali mandir",
+    "district":"godda",
+    "state":"jharkhand",
+    "pin_code":"814133"
+}
+
+
+
 
 ###
 POST http://localhost:8080/user/resetpasswordbyemail

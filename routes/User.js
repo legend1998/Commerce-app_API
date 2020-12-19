@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 let UserModel = require("../Model/UserModel");
 let ProductModel = require("../Model/ProductModel");
+let AddressModel = require("../Model/AddressModel");
 
 // get all user
 router.route("/getalluser").get((req, res) => {
@@ -24,7 +25,6 @@ router.route("/create").post((req, res) => {
     email: req.body.email,
     role: req.body.role,
     password: bcrypt.hashSync(req.body.password, 10),
-    date_joined: Math.floor(Date.now() / 1000),
     phone: req.body.phone,
   });
 
@@ -53,6 +53,27 @@ router.route("/login").post((req, res) => {
     });
 });
 
+// add address
+router.route("/address").post((req, res) => {
+  let address = new AddressModel({
+    street: req.body.street,
+    house: req.body.house,
+    Landmark: req.body.landmark,
+    district: req.body.district,
+    state: req.body.state,
+    pin_code: req.body.state,
+  });
+  UserModel.findOneAndUpdate(
+    { _id: req.body.uid },
+    { $push: { address: address } }
+  )
+    .then((result) => {
+      res.status(200).send({ success: true });
+    })
+    .catch((err) => {
+      res.status(404).send({ err: err });
+    });
+});
 //update user
 
 //update password by id
