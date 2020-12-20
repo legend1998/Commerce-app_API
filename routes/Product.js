@@ -140,7 +140,7 @@ router.route("/getproduct/:pid").get((req, res) => {
   let pid = req.params.pid;
   console.log(pid);
   productModel
-    .find({ _id: pid })
+    .findOne({ _id: pid })
     .then((doc) => {
       res.status(200).json(doc);
     })

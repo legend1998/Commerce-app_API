@@ -119,7 +119,8 @@ Content-Type: application/json
 GET https://vup-api.herokuapp.com/product/getall
 Authorization: dklfhaewowi32047230jlks
 ###
-GET http://localhost:8080/product/getproduct/5fd0b6b01de363461c852baf
+GET http://vup-api.herokuapp.com/product/getproduct/5fdacc4d8a85e700174fa2c9
+Authorization: dklfhaewowi32047230jlks
 
 ###
 GET http://localhost:8080/product/searchByCategory/lower
