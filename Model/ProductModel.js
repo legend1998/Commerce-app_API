@@ -17,6 +17,8 @@ const ProductSchema = new mongoose.Schema({
   details: { type: [Object], required: true },
   reviews: { type: [Object] },
   seller: { type: String, required: true },
+  createdAt: { type: Date, required: true, default: Date.now() },
+  featured: { type: Boolean, required: true, default: false },
 });
 
 const Product = mongoose.model("products", ProductSchema);
