@@ -112,6 +112,7 @@ Content-Type: application/json
     "thumbnailURL": "https://firebasestorage.googleapis.com/v0/b/fashion-app-7be49.appspot.com/o/thumbnail%2Fimages.jpg?alt=media&token=6db16315-dea9-4bd8-97ac-cf07ba616bcf",
     "group": "not",
     "quantity": 5,
+    "featured":true,
     "__v": 0
   }
 
