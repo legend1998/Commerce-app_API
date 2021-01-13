@@ -1,15 +1,15 @@
-POST  http://localhost:8080/user/create
+POST  https://vup-api.herokuapp.com/user/create
 Authorization: dklfhaewowi32047230jlks
 Content-Type: application/json
 
 { 
-    "uid": "289347ioewr",
-    "fname":"mayank",
-    "lname": "kumar",
-    "email":"mayank.1997@gmail.com",
+    "uid": "lasdfhpwr93",
+    "fname":"Admin",
+    "lname": "guy",
+    "email":"admin@gmail.com",
     "role": "admin",
-    "password": "mayank",
-    "phone": "9534133934"
+    "password": "admin",
+    "phone": "8340452261"
 }
 
 ###

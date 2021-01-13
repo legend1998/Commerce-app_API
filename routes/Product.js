@@ -153,8 +153,8 @@ router.route("/getproduct/:pid").get((req, res) => {
 });
 
 //delete product
-router.route("/deleteproduct:pid").delete((req, res) => {
-  let pid = req.query.pid;
+router.route("/deleteproduct/:pid").delete((req, res) => {
+  let pid = req.params.pid;
 
   productModel
     .findByIdAndRemove({ _id: pid })
