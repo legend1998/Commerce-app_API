@@ -143,7 +143,7 @@ Authorization: dklfhaewowi32047230jlks
 GET http://localhost:8080/user/addtowishlist:id-:pid
 
 ###
-GET http://localhost:8080/category/getcategory
+GET  https://vup-api.herokuapp.com/category/getcategory
 Authorization: dklfhaewowi32047230jlks
 
 ###
@@ -154,3 +154,8 @@ Content-Type: application/json
 {
   "category":"shirts"
 }
+
+
+###
+GET http://localhost:8080/product/latest
+Authorization: dklfhaewowi32047230jlks

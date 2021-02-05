@@ -166,4 +166,51 @@ router.route("/deleteproduct/:pid").delete((req, res) => {
     });
 });
 
+//get product by latest
+router.route("/latest").get((req, res) => {
+  productModel
+    .find(
+      {},
+      {
+        title: 1,
+        group: 1,
+        category: 1,
+        description: 1,
+        color: 1,
+        thumbnailURL: 1,
+        offer_price: 1,
+        sell_price: 1,
+        featured: 1,
+        createdAt: 1,
+      },
+      {
+        sort: {
+          createdAt: -1,
+        },
+        limit: 20,
+      }
+    )
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((e) => {
+      res.status(404).send({ message: e });
+    });
+});
+
+// by featured
+router.route("/featured").get((req, res) => {
+  productModel
+    .find({ featured: true })
+    .limit(20)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((e) => {
+      res.status(404).send({ message: e });
+    });
+});
+
+//featured
+
 module.exports = router;
