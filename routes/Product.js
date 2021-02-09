@@ -50,6 +50,7 @@ router.route("/search").post((req, res) => {
         offer_price: 1,
         sell_price: 1,
         featured: 1,
+        createdAt: 1,
       }
     )
     .limit(20)
