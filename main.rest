@@ -143,19 +143,20 @@ Authorization: dklfhaewowi32047230jlks
 GET http://localhost:8080/user/addtowishlist:id-:pid
 
 ###
-GET  https://vup-api.herokuapp.com/category/getcategory
-Authorization: dklfhaewowi32047230jlks
-
-###
-POST http://localhost:8080/category/getcategory
+POST http://localhost:8080/product/search
 Authorization: dklfhaewowi32047230jlks
 Content-Type: application/json
 
 {
-  "category":"shirts"
+    "query":"white black top"
 }
+###
+GET  https://vup-api.herokuapp.com/category/getcategory
+Authorization: dklfhaewowi32047230jlks
+
+
 
 
 ###
-GET http://localhost:8080/product/latest
+GET  https://vup-api.herokuapp.com/product/latest
 Authorization: dklfhaewowi32047230jlks

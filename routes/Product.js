@@ -26,6 +26,37 @@ router.route("/searchByCategory/:cat").get((req, res) => {
     });
 });
 
+// search query
+router.route("/search").post((req, res) => {
+  var query = req.body.query;
+  if (query.length == 0) res.status(404).send("no query found");
+
+  articles = ["a", "an", "the", "for", "in", "for", ""];
+
+  query = query.split(" ");
+
+  query = query.filter((e) => !articles.includes(e));
+
+  productModel
+    .find(
+      { tags: { $in: query } },
+      {
+        title: 1,
+        group: 1,
+        tags: 1,
+        offer_price: 1,
+        sell_price: 1,
+      }
+    )
+    .limit(20)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((e) => {
+      res.status(404).send("something went wrong");
+    });
+});
+
 //getall product
 router.route("/getall").get((req, res) => {
   productModel
