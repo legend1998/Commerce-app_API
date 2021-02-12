@@ -156,7 +156,7 @@ router.route("/update/:pid").post((req, res) => {
 });
 
 // add reviews
-router.route("/addreview:pid").post((req, res) => {
+router.route("/addreview/:pid").post((req, res) => {
   let pid = req.params.pid;
   let review = {
     user: req.body.user,

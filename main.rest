@@ -120,13 +120,13 @@ Content-Type: application/json
 GET https://vup-api.herokuapp.com/product/getall
 Authorization: dklfhaewowi32047230jlks
 ###
-GET http://vup-api.herokuapp.com/product/getproduct/5fdacc4d8a85e700174fa2c9
+GET http://vup-api.herokuapp.com/product/getproduct/601ba4f9106ef100159797d9
 Authorization: dklfhaewowi32047230jlks
 
 ###
 GET http://localhost:8080/product/searchByCategory/lower
 ###
-POST  http://localhost:8080/product/addreview5fd0b6b01de363461c852baf
+POST  http://localhost:8080/product/addreview/601ba4f9106ef100159797d9
 Content-Type: application/json
 
 {
@@ -143,12 +143,12 @@ Authorization: dklfhaewowi32047230jlks
 GET http://localhost:8080/user/addtowishlist:id-:pid
 
 ###
-POST http://localhost:8080/product/search
+POST https://vup-api.herokuapp.com/product/search
 Authorization: dklfhaewowi32047230jlks
 Content-Type: application/json
 
 {
-    "query":"white black top"
+    "query":"lofty"
 }
 ###
 GET  https://vup-api.herokuapp.com/category/getcategory
