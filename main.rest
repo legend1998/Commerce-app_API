@@ -23,7 +23,8 @@ Authorization: dklfhaewowi32047230jlks
 Content-Type: application/json
 
 {
-    "email":"mayank.1997@gmail.com",
+//    "email":"mayank.1997@gmail.com",
+"email" :"8340452261",
     "password":"mayank"
 }
 
