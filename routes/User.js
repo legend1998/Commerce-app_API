@@ -44,7 +44,9 @@ router.route("/login").post((req, res) => {
   if (user.endsWith("@gmail.com")) {
     UserModel.findOne({ email: req.body.email })
       .then((user) => {
-        if (bcrypt.compareSync(req.body.password, user.password)) {
+        if (user == null) {
+          res.status(200).send({ message: "user not registered" });
+        } else if (bcrypt.compareSync(req.body.password, user.password)) {
           res.status(200).json(user);
         } else {
           res
@@ -58,7 +60,9 @@ router.route("/login").post((req, res) => {
   } else {
     UserModel.findOne({ phone: req.body.email })
       .then((user) => {
-        if (bcrypt.compareSync(req.body.password, user.password)) {
+        if (user == null) {
+          res.status(200).send({ message: "user not registered" });
+        } else if (bcrypt.compareSync(req.body.password, user.password)) {
           res.status(200).json(user);
         } else {
           res
@@ -67,7 +71,7 @@ router.route("/login").post((req, res) => {
         }
       })
       .catch((err) => {
-        res.status(200).send({ message: err });
+        res.status(200).send({ message: "" });
       });
   }
 });
