@@ -165,7 +165,7 @@ router.route("/addreview/:pid").post((req, res) => {
 
   productModel
     .findOneAndUpdate({ _id: pid }, { $push: { reviews: review } })
-    .then(() => {
+    .then((result) => {
       res.status(200).send({ message: "success" });
     })
     .catch((err) => {
