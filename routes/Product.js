@@ -89,7 +89,6 @@ router.route("/getall").get((req, res) => {
 
 // create product
 router.route("/add").post((req, res) => {
-  console.log(req.body);
   let product = new productModel({
     pid: req.body.pid,
     title: req.body.title,
@@ -177,7 +176,6 @@ router.route("/addreview/:pid").post((req, res) => {
 
 router.route("/getproduct/:pid").get((req, res) => {
   let pid = req.params.pid;
-  console.log(pid);
   productModel
     .findOne({ _id: pid })
     .then((doc) => {

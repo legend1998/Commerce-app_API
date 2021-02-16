@@ -18,14 +18,14 @@ Authorization: dklfhaewowi32047230jlks
 
 
 ###
-POST http://localhost:8080/user/login
+POST https://vup-api.herokuapp.com/user/login
 Authorization: dklfhaewowi32047230jlks
 Content-Type: application/json
 
 {
 //    "email":"mayank.1997@gmail.com",
-"email" :"mayank.1997@gmail.com",
-    "password":"mayank"
+"email" :"8340452261",
+    "password":"admin"
 }
 
 ###
@@ -161,4 +161,21 @@ Authorization: dklfhaewowi32047230jlks
 
 ###
 GET  https://vup-api.herokuapp.com/product/latest
+Authorization: dklfhaewowi32047230jlks
+
+
+###
+POST http://localhost:8080/order/makeorder
+Authorization: dklfhaewowi32047230jlks
+Content-Type: application/json
+
+{
+  "totalAmount":"400",
+  "userid":"5fd845491d950472306d3e37",
+  "products":["sdfds","sdfd"],
+  "status":"paid"
+}
+
+###
+GET http://localhost:8080/order/getall
 Authorization: dklfhaewowi32047230jlks
