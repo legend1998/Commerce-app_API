@@ -10,6 +10,7 @@ const productRoute = require("./routes/Product");
 const UserRoute = require("./routes/User");
 const OrderRoute = require("./routes/Order");
 const CategoryRoute = require("./routes/Category");
+const CoupanRoute = require("./routes/Coupans");
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use("/product", auth, productRoute);
 app.use("/user", auth, UserRoute);
 app.use("/order", auth, OrderRoute);
+app.use("/coupan", auth, CoupanRoute);
 app.use("/category", auth, CategoryRoute);
 
 // mongoose connection

@@ -1,9 +1,12 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
 let UserModel = require("../Model/UserModel");
 let ProductModel = require("../Model/ProductModel");
 let AddressModel = require("../Model/AddressModel");
+let CoupanModel = require("../Model/CoupanModel");
+const User = require("../Model/UserModel");
 
 // get all user
 router.route("/getalluser").get((req, res) => {
@@ -17,24 +20,30 @@ router.route("/getalluser").get((req, res) => {
 });
 
 //create user or sign up
-router.route("/create").post((req, res) => {
-  let user = new UserModel({
-    uid: req.body.uid,
+router.route("/create").post(async (req, res) => {
+  let refcode = crypto.randomBytes(16).toString("base64");
+
+  let user = await UserModel.create({
     fname: req.body.fname,
     lname: req.body.lname,
+    refCode: refcode,
     email: req.body.email,
     role: req.body.role,
     password: bcrypt.hashSync(req.body.password, 10),
     phone: req.body.phone,
-  });
-
-  user
-    .save()
-    .then((user) => {
-      res.status(200).json(user);
+  })
+    .then((doc) => doc)
+    .catch((e) => false);
+  if (!user) return res.status(400).send({ message: "can't create user" });
+  let coupan = await CoupanModel.create({
+    coupanCode: crypto.randomBytes(8).toString("base64"),
+  }).catch((e) => false);
+  UserModel.findOneAndUpdate({ _id: user._id }, { $push: { coupans: coupan } })
+    .then((doc) => {
+      res.status(200).json(doc);
     })
-    .catch((err) => {
-      res.status(400).send({ message: err });
+    .catch((e) => {
+      res.status(400).send({ message: "something went wrong" });
     });
 });
 
@@ -203,7 +212,7 @@ router.route("/addtoorder/:id-:uid").get((req, res) => {
   )
     .then((product) => {
       UserModel.findByIdAndUpdate(
-        { uid: req.params.uid },
+        { _id: req.params.uid },
         { $push: { orders: product } }
       )
         .then(() => {
@@ -220,12 +229,42 @@ router.route("/addtoorder/:id-:uid").get((req, res) => {
 
 //delete user
 router.route("/deleteuser:id").delete((req, res) => {
-  UserModel.findOneAndRemove({ uid: req.params.id })
+  UserModel.findOneAndRemove({ _id: req.params.id })
     .then(() => {
       res.status(200).send({ message: "success" });
     })
     .catch((err) => {
       res.status(400).send({ message: err });
+    });
+});
+
+//add refcode
+router.route("/addrefcode").post(async (req, res) => {
+  let exist = await UserModel.exists({ refCode: req.body.refcode });
+  if (!exist) return res.status(200).send({ message: "invalid referal code" });
+  let user = await UserModel.findOne({ _id: req.body.uid });
+
+  if (user.refBy != "")
+    return res
+      .status(200)
+      .send({ message: `already referred by ${user.refBy}` });
+
+  let coupan = await CoupanModel.create({
+    coupanCode: crypto.randomBytes(8).toString("base64"),
+  });
+
+  await UserModel.findOneAndUpdate(
+    { refCode: req.body.refcode },
+    { $push: { coupans: coupan } }
+  );
+  UserModel.findOneAndUpdate({ _id: req.body.uid }, { refBy: req.body.refcode })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((e) => {
+      res
+        .status(402)
+        .send({ message: "something went wrong try again after some time" });
     });
 });
 

@@ -1,21 +1,37 @@
-POST  https://vup-api.herokuapp.com/user/create
+POST  http://localhost:8080/user/create
 Authorization: dklfhaewowi32047230jlks
 Content-Type: application/json
 
 { 
-    "uid": "lasdfhpwr93",
-    "fname":"Admin",
-    "lname": "guy",
-    "email":"admin@gmail.com",
+    "fname":"suman",
+    "lname": "kumar",
+    "email":"suman@gmail.com",
     "role": "admin",
-    "password": "admin",
-    "phone": "8340452261"
+    "password": "suman",
+    "phone": "9534133934"
 }
 
+
 ###
-GET  https://vup-api.herokuapp.com/user/getalluser
+GET http://localhost:8080/coupan/create
 Authorization: dklfhaewowi32047230jlks
 
+
+
+###
+GET  http://localhost:8080/user/getalluser
+Authorization: dklfhaewowi32047230jlks
+
+
+###
+POST http://localhost:8080/user/addrefcode
+Authorization: dklfhaewowi32047230jlks
+Content-Type: application/json
+
+{
+  "refcode":"9T4lc2U6IcL1Ysku+eUwPQ==",
+  "uid":"60483e9c87ea7e2c1c967efb"
+}
 
 ###
 POST https://vup-api.herokuapp.com/user/login
