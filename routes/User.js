@@ -89,7 +89,6 @@ router.route("/login").post((req, res) => {
 router.route("/address").post((req, res) => {
   let address = new AddressModel({
     street: req.body.street,
-    house: req.body.house,
     Landmark: req.body.landmark,
     district: req.body.district,
     state: req.body.state,
@@ -100,7 +99,7 @@ router.route("/address").post((req, res) => {
     { $push: { address: address } }
   )
     .then((result) => {
-      res.status(200).send({ success: true });
+      res.status(200).json(result);
     })
     .catch((err) => {
       res.status(404).send({ err: err });

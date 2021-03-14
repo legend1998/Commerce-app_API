@@ -11,12 +11,15 @@ router.route("/searchByCategory/:cat").get((req, res) => {
       {
         title: 1,
         group: 1,
-        category: 1,
         rating: 1,
+        category: 1,
         description: 1,
         color: 1,
+        thumbnailURL: 1,
         offer_price: 1,
         sell_price: 1,
+        featured: 1,
+        createdAt: 1,
       }
     )
     .then((doc) => {

@@ -40,8 +40,8 @@ Content-Type: application/json
 
 {
 //    "email":"mayank.1997@gmail.com",
-"email" :"8340452261",
-    "password":"admin"
+"email" :"9534133934",
+    "password":"suman"
 }
 
 ###
@@ -50,9 +50,8 @@ Authorization: dklfhaewowi32047230jlks
 Content-Type: application/json
 
 {
-    "uid":"5fd845491d950472306d3e37",
-    "street":"college road",
-    "house":"o2i34j",
+    "uid":"604849583a2f3b0ef00aafee",
+    "street":"banka road",
     "landmark":"sarkanda chowk bajrangbali mandir",
     "district":"godda",
     "state":"jharkhand",
@@ -141,7 +140,9 @@ GET http://vup-api.herokuapp.com/product/getproduct/601ba4f9106ef100159797d9
 Authorization: dklfhaewowi32047230jlks
 
 ###
-GET http://localhost:8080/product/searchByCategory/lower
+GET http://vup-api.herokuapp.com/product/searchByCategory/Girls top
+Authorization: dklfhaewowi32047230jlks
+
 ###
 POST  http://localhost:8080/product/addreview/601ba4f9106ef100159797d9
 Authorization: dklfhaewowi32047230jlks
