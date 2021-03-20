@@ -96,7 +96,8 @@ router.route("/address").post((req, res) => {
   });
   UserModel.findOneAndUpdate(
     { _id: req.body.uid },
-    { $push: { address: address } }
+    { $push: { address: address } },
+    { new: true }
   )
     .then((result) => {
       res.status(200).json(result);
