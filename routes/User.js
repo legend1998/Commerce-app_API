@@ -153,7 +153,7 @@ router.route("/forgotPasswordLink").post((req, res) => {
           time only.
         </p>
         <h3>click here</h3>
-        <a href="http://localhost:8080/quality-bazar/alsfkapwoehsfalkjs/changepassword/:id/${user._id};">change password</a>
+        <a href="https://vup-api.herokuapp.com/quality-bazar/alsfkapwoehsfalkjs/changepassword/:id/${user._id};">change password</a>
         
         
       </div>`,
