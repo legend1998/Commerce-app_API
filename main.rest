@@ -5,16 +5,31 @@ Content-Type: application/json
 { 
     "fname":"suman",
     "lname": "kumar",
-    "email":"suman@gmail.com",
+    "email":"sumankuma.1997@gmail.com",
     "role": "admin",
-    "password": "suman",
-    "phone": "9534133934"
+    "password":"suman1998",
+    "phone": "9931315450 "
 }
+
+###
+GET http://localhost:8080/user/l203947sjdflahsfoweihtlaghsdlgh
+Authorization: dklfhaewowi32047230jlks
 
 
 ###
 GET http://localhost:8080/coupan/create
 Authorization: dklfhaewowi32047230jlks
+
+
+###
+POST  http://localhost:8080/user/forgotPasswordLink
+Authorization: dklfhaewowi32047230jlks
+Content-Type: application/json
+
+{ 
+    "mobile":"9931315450"
+}
+
 
 
 
@@ -34,14 +49,14 @@ Content-Type: application/json
 }
 
 ###
-POST https://vup-api.herokuapp.com/user/login
+POST http://localhost:8080/user/login
 Authorization: dklfhaewowi32047230jlks
 Content-Type: application/json
 
 {
 //    "email":"mayank.1997@gmail.com",
-"email" :"9534133934",
-    "password":"suman"
+"email" :"9931315450",
+    "password":"legend1998"
 }
 
 ###

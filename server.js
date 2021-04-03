@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
+const path = require("path");
 
 const auth = require("./auth");
 
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 8080;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use("/product", auth, productRoute);
 app.use("/user", auth, UserRoute);
 app.use("/order", auth, OrderRoute);
@@ -43,6 +45,13 @@ db.once("open", function () {
 app.get("/", (req, res) => {
   res.send("all good");
 });
+
+app.get(
+  "/quality-bazar/alsfkapwoehsfalkjs/changepassword/:id/6067f1a68a8c9c341916977b;",
+  (req, res) => {
+    res.sendFile(path.join(__dirname + "/changepassword.html"));
+  }
+);
 
 app.listen(PORT, () => {
   console.log(`backend is running on port ${PORT}`);

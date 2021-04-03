@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
+const nodemailer = require("nodemailer");
 
 let UserModel = require("../Model/UserModel");
 let ProductModel = require("../Model/ProductModel");
@@ -33,8 +34,14 @@ router.route("/create").post(async (req, res) => {
     phone: req.body.phone,
   })
     .then((doc) => doc)
-    .catch((e) => false);
-  if (!user) return res.status(400).send({ message: "can't create user" });
+    .catch((e) => {
+      console.log(e);
+      return false;
+    });
+  if (!user)
+    return res
+      .status(400)
+      .send({ message: "user is already exist with given email or mobile" });
   let coupan = await CoupanModel.create({
     coupanCode: crypto.randomBytes(8).toString("base64"),
   }).catch((e) => false);
@@ -107,30 +114,65 @@ router.route("/address").post((req, res) => {
     });
 });
 //update user
-
-//update password by id
-
-//update password by email
-
-router.route("/resetpasswordbyemail").post((req, res) => {
-  let email = req.body.email;
-  UserModel.findOneAndUpdate(
-    { email: email },
-    { password: bcrypt.hashSync(req.body.password, 10) }
-  ).then(() => {
-    res.status(200).send({ message: "success" });
-  });
+router.route("/resetpass").post((req, res) => {
+  UserModel.findByIdAndUpdate(
+    { _id: req.body.id },
+    {
+      password: bcrypt.hashSync(req.body.pass, 10),
+    }
+  )
+    .then(() => {
+      res.status(200).send({ success: true });
+    })
+    .catch((e) => {
+      res.status(200).send({ success: false, error: e });
+    });
 });
+//sent email for password change link by email
 
-// update password by phone number
-router.route("/resetpasswordbyphone").post((req, res) => {
-  let phone = req.body.phone;
-  UserModel.findOneAndUpdate(
-    { phone: phone },
-    { password: bcrypt.hashSync(req.body.password, 10) }
-  ).then(() => {
-    res.status(200).send({ message: "success" });
-  });
+router.route("/forgotPasswordLink").post((req, res) => {
+  UserModel.findOne({ phone: req.body.mobile })
+    .then((user) => {
+      var transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: "qualitybazarhzbg@gmail.com",
+          pass: "315@rupesh",
+        },
+      });
+
+      var mailOptions = {
+        from: "qualitybazarhzbg@gmail.com",
+        to: user.email,
+        subject: "click this below link to change your password",
+        text: "this is link",
+        html: `    <div>
+        <h1>Quality Bazar</h1>
+        <p>
+          this is a private link for you to change the password so use this one
+          time only.
+        </p>
+        <h3>click here</h3>
+        <a href="http://localhost:8080/quality-bazar/alsfkapwoehsfalkjs/changepassword/:id/${user._id};">change password</a>
+        
+        
+      </div>`,
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+          res.status(400).send("something went wrong on server side.");
+        } else {
+          console.log("Email sent: " + info.response);
+          res.status(200).send({ success: true, info: info.response });
+        }
+      });
+    })
+    .catch((e) => {
+      console.log(e);
+      res.status(200).send({ success: false });
+    });
 });
 
 //update cart
